@@ -23,17 +23,28 @@ namespace MiddayMarketplace.Controllers
             return View(marketItems);
         }
 
+        [HttpPost]
+        public IActionResult Filter(string lister, string itemName, string deliveryType)
+        {
+            var marketItems = repo.GetAllMarketItems()
+                .Where(i => lister == null || i.Lister.UserName == lister)
+                .Where(i => itemName == null || i.ItemName.Contains(itemName))
+                .Where(i => deliveryType == null || i.DeliveryType == deliveryType)
+                .ToList();
+            return View("Index", marketItems);
+        }
+
         public IActionResult Item(string value)
         {
-            var MarketItemId = int.Parse(value);
-            var marketItem = repo.GetMarketItemById(MarketItemId);
+            var marketItemId = int.Parse(value);
+            var marketItem = repo.GetMarketItemById(marketItemId);
             return View(marketItem);
         }
 
         [HttpPost]
         public IActionResult Delete(int id)
         {
-            if(repo.DeleteMarketItem(id))
+            if (repo.DeleteMarketItem(id))
             {
                 return RedirectToAction("Index");
             }

@@ -25,19 +25,19 @@
             </div>
             <div class="row p-2">
                 <label asp-for="Lister.UserName" class="col-md-2 control-label"><strong>Lister Name:</strong></label>
-                <input asp-for="Lister.UserName" class="col-md-9 form-control" />
+                <input asp-for="Lister.UserName" class="col-md-9 form-control" required />
             </div>
             <div class="row p-2">
                 <label asp-for="ItemName" class="col-md-2 control-label"><strong>Item Name:</strong></label>
-                <input asp-for="ItemName" class="col-md-9 form-control" />
+                <input asp-for="ItemName" class="col-md-9 form-control" required />
             </div>
             <div class="row p-2">
                 <label asp-for="ItemPrice" class="col-md-2 control-label"><strong>Item Price:</strong></label>
-                <input asp-for="ItemPrice" type="number" step=".01" class="col-md-9 form-control" />
+                <input asp-for="ItemPrice" type="number" step=".01" class="col-md-9 form-control" required />
             </div>
             <div class="row p-2">
                 <label asp-for="DeliveryType" class="col-md-2 control-label"><strong>Delivery Type:</strong></label>
-                <select asp-for="DeliveryType" class="col-md-9 form-control">
+                <select asp-for="DeliveryType" class="col-md-9 form-control" required >
                     <option value="Pick Up">Pick Up</option>
                     <option value="Deliver">Deliver</option>
                     <option value="Mail">Mail</option>
@@ -48,23 +48,23 @@
             </div>
             <div class="row p-2">
                 <label asp-for="ItemLocation.StreetAddress" class="col-md-2 control-label"><strong>Street Address:</strong></label>
-                <input asp-for="ItemLocation.StreetAddress" class="col-md-9 form-control" />
+                <input asp-for="ItemLocation.StreetAddress" class="col-md-9 form-control" required />
             </div>
             <div class="row p-2">
                 <label asp-for="ItemLocation.City" class="col-md-2 control-label"><strong>City:</strong></label>
-                <input asp-for="ItemLocation.City" class="col-md-9 form-control" />
+                <input asp-for="ItemLocation.City" class="col-md-9 form-control" required />
             </div>
             <div class="row p-2">
                 <label asp-for="ItemLocation.State" class="col-md-2 control-label"><strong>State:</strong></label>
-                <input asp-for="ItemLocation.State" class="col-md-9 form-control" />
+                <input asp-for="ItemLocation.State" class="col-md-9 form-control" required />
             </div>
             <div class="row p-2">
                 <label asp-for="ItemLocation.ZipCode" class="col-md-2 control-label"><strong>ZipCode:</strong></label>
-                <input asp-for="ItemLocation.ZipCode" class="col-md-9 form-control" />
+                <input asp-for="ItemLocation.ZipCode" class="col-md-9 form-control" required />
             </div>
             <div class="row p-2">
                 <label asp-for="ItemLocation.Country" class="col-md-2 control-label"><strong>Country:</strong></label>
-                <input asp-for="ItemLocation.Country" class="col-md-9 form-control" />
+                <input asp-for="ItemLocation.Country" class="col-md-9 form-control" required />
             </div>
             <div class="row p-2">
                 <button type="submit" class="col-3 form-control btn btn-success">Submit</button>

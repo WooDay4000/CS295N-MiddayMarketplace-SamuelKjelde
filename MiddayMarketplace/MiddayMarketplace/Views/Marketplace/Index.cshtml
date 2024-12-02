@@ -10,7 +10,35 @@
         Where all the current items are listed.
     </p>
 </div>
+
 <a href="/Marketplace/Post">Post</a>
+<br />
+</a>
+<br />
+
+<strong>Filters for the list of Items:</strong>
+<form method="post" action="/Marketplace/Filter" class="container">
+    <div class="col-md-11">
+        <div class="row p-2">
+            <label for="lister" class="col-md-2 control-label"><strong>Lister Name:</strong></label>
+            <input name="lister" class="col-md-9 form-control" />
+            <label for="itemName" class="col-md-2 control-label"><strong>Item Name:</strong></label>
+            <input name="itemName" class="col-md-9 form-control" />
+            <label for="DeliveryType" class="col-md-2 control-label"><strong>Delivery Type:</strong></label>
+            <select name="DeliveryType" class="col-md-9 form-control">
+                <option value=""></option>
+                <option value="Pick Up">Pick Up</option>
+                <option value="Deliver">Deliver</option>
+                <option value="Mail">Mail</option>
+            </select>
+        </div>
+        <div class="row p-2">
+            <button type="submit" class="col-3 form-control btn btn-success">Submit</button>
+        </div>
+    </div>
+</form>
+
+<!--
 <form method="post" class="container">
     <div class="row justify-content-end">
         <div class="col-md-4">
@@ -29,17 +57,23 @@
         </div>
     </div>
 </form>
+-->
 
 <div class="text-center">
     <h1 class="display-4">List of Items</h1>
-    @if (Model.Count != 0) {
-        foreach(MarketItem marketItem in Model) {
+    <hr />
+    @if (Model.Count != 0)
+    {
+        foreach (MarketItem marketItem in Model)
+        {
             <div class="container">
+                <strong>Lister Name:</strong> @marketItem.Lister.UserName<br />
                 <strong>Item Name:</strong> @marketItem.ItemName<br />
                 <strong>Item Price:</strong> @marketItem.ItemPrice.ToString("0.00")<br />
-                <strong>Lister Name:</strong> @marketItem.Lister.UserName<br />
+                <strong>Delivery Type:</strong> @marketItem.DeliveryType<br />
                 <a href="/Marketplace/Item?value=@marketItem.MarketItemId">Inspect</a>
             </div>
+            <hr />
         }
     }
 </div>
