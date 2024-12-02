@@ -24,4 +24,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MiddayMarketplace\MiddayMarketplace.csproj" />
+  </ItemGroup>
+
 </Project>

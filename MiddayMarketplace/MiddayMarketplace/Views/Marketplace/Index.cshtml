@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<MarketItem>
+@{
     ViewData["Title"] = "Marketplace Page";
 }
 
@@ -9,7 +10,7 @@
         Where all the current items are listed.
     </p>
 </div>
-
+<a href="/Marketplace/Post">Post</a>
 <form method="post" class="container">
     <div class="row justify-content-end">
         <div class="col-md-4">
@@ -29,5 +30,16 @@
     </div>
 </form>
 
-<a href="/Marketplace/Item">Item</a>
-<a href="/Marketplace/Post">Post</a>
+<div class="text-center">
+    <h1 class="display-4">List of Items</h1>
+    @if (Model.Count != 0) {
+        foreach(MarketItem marketItem in Model) {
+            <div class="container">
+                <strong>Item Name:</strong> @marketItem.ItemName<br />
+                <strong>Item Price:</strong> @marketItem.ItemPrice.ToString("0.00")<br />
+                <strong>Lister Name:</strong> @marketItem.Lister.UserName<br />
+                <a href="/Marketplace/Item?value=@marketItem.MarketItemId">Inspect</a>
+            </div>
+        }
+    }
+</div>

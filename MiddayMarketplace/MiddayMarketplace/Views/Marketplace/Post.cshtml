@@ -1,36 +1,74 @@
-﻿@{
+﻿@model MarketItem
+@{
     ViewData["Title"] = "Post Page";
 }
 
 <div class="text-center">
-    <h1 class="display-2">"Post"</h1>
+    <h1 class="display-2">Post</h1>
     <p class="m-4">
         Welcome to the post page!<br />
         Where you can list an item for sale.
     </p>
 </div>
-<div class="container col-md-7" style="border:1px solid">
-    <p class="col-mt-3">
-        <!-- 
-        <div class="row p-2">
-            <label asp-for="" class="col-md-2 control-label">Sender</label>
-            <input asp-for="" class="col-md-9 form-control" />
-        </div>-->
-       
-        
-        <strong>Item Price:</strong><br />
-        <strong>Lister Name:</strong><br />
-        <strong>Item Negotiate:</strong><br />
-        <strong>Item Delivery Type:</strong><br />
-        <strong>Item Sale By Date:</strong><br />
-        <br />
-        <strong>Street Address:</strong><br />
-        <strong>City:</strong><br />
-        <strong>State:</strong><br />
-        <strong>Zip Code:</strong><br />
-        <strong>Country:</strong><br />
-    </p>
-    <div class="row p-2">
-        <button type="submit" class="form-control btn btn-success w-25">Buy</button>
+<form method="post" class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-11">
+            <div class="row p-2">
+                <!-- This is used to display if an error
+                    occurred while trying to save a Message
+                    object to the database.
+                -->
+                <strong>@ViewBag.ErrorMessage</strong>
+            </div>
+            <div class="row p-2">
+                <strong>Item Information:</strong>
+            </div>
+            <div class="row p-2">
+                <label asp-for="Lister.UserName" class="col-md-2 control-label"><strong>Lister Name:</strong></label>
+                <input asp-for="Lister.UserName" class="col-md-9 form-control" />
+            </div>
+            <div class="row p-2">
+                <label asp-for="ItemName" class="col-md-2 control-label"><strong>Item Name:</strong></label>
+                <input asp-for="ItemName" class="col-md-9 form-control" />
+            </div>
+            <div class="row p-2">
+                <label asp-for="ItemPrice" class="col-md-2 control-label"><strong>Item Price:</strong></label>
+                <input asp-for="ItemPrice" type="number" step=".01" class="col-md-9 form-control" />
+            </div>
+            <div class="row p-2">
+                <label asp-for="DeliveryType" class="col-md-2 control-label"><strong>Delivery Type:</strong></label>
+                <select asp-for="DeliveryType" class="col-md-9 form-control">
+                    <option value="Pick Up">Pick Up</option>
+                    <option value="Deliver">Deliver</option>
+                    <option value="Mail">Mail</option>
+                </select>
+            </div>
+            <div class="row p-2">
+                <strong>Location Information:</strong>
+            </div>
+            <div class="row p-2">
+                <label asp-for="ItemLocation.StreetAddress" class="col-md-2 control-label"><strong>Street Address:</strong></label>
+                <input asp-for="ItemLocation.StreetAddress" class="col-md-9 form-control" />
+            </div>
+            <div class="row p-2">
+                <label asp-for="ItemLocation.City" class="col-md-2 control-label"><strong>City:</strong></label>
+                <input asp-for="ItemLocation.City" class="col-md-9 form-control" />
+            </div>
+            <div class="row p-2">
+                <label asp-for="ItemLocation.State" class="col-md-2 control-label"><strong>State:</strong></label>
+                <input asp-for="ItemLocation.State" class="col-md-9 form-control" />
+            </div>
+            <div class="row p-2">
+                <label asp-for="ItemLocation.ZipCode" class="col-md-2 control-label"><strong>ZipCode:</strong></label>
+                <input asp-for="ItemLocation.ZipCode" class="col-md-9 form-control" />
+            </div>
+            <div class="row p-2">
+                <label asp-for="ItemLocation.Country" class="col-md-2 control-label"><strong>Country:</strong></label>
+                <input asp-for="ItemLocation.Country" class="col-md-9 form-control" />
+            </div>
+            <div class="row p-2">
+                <button type="submit" class="col-3 form-control btn btn-success">Submit</button>
+            </div>
+        </div>
     </div>
-</div>
+</form>
