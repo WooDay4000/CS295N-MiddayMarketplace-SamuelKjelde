@@ -1,0 +1,49 @@
+﻿@model Shipping
+@{
+    ViewData["Title"] = "Shipping Page";
+}
+
+<div class="text-center">
+    <h1 class="display-2">Shipping Cost</h1>
+    <p class="m-4">
+        Welcome to the shipping calculator!<br />
+        Where you can use this calculator to determine<br />
+        how much should shipping be for a given item.
+    </p>
+</div>
+
+<p>
+    Where the base shipping cost is five dollars<br />
+    where depending on the item's weight and size<br />
+    an amount is added to this base amount.<br />
+    With this amount being a calculation of the shipping<br />
+    rate of $1.50 times either the dimensional weight<br />
+    or the actual weight of the item, whichever is higher.<br />
+</p>
+
+<strong>Enter the information to get the Shipping Cost:</strong>
+<br />
+<strong>Shipping Cost:</strong> $@Model.ShippingCost
+<form method="post" class="container">
+    <div class="row justify-content-center">
+        <div class="row p-2">
+            <label for="Length" class="col-md-2">Length (in):</label>
+            <input name="Length" class="col-md-8 form-control" value="@Model.Length" />
+        </div>
+        <div class="row p-2">
+            <label for="Width" class="col-md-2">Width (in):</label>
+            <input name="Width" class="col-md-8 form-control" value="@Model.Width" />
+        </div>
+        <div class="row p-2">
+            <label for="Height" class="col-md-2">Height (in):</label>
+            <input name="Height" class="col-md-8 form-control" value="@Model.Height" />
+        </div>
+        <div class="row p-2">
+            <label for="Weight" class="col-md-2">Weight (lb):</label>
+            <input name="Weight" class="col-md-8 form-control" value="@Model.Weight" />
+        </div>
+        <div class="row p-2">
+            <button type="submit" class="col-3 form-control btn btn-success">Submit</button>
+        </div>
+    </div>
+</form>
