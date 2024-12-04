@@ -13,6 +13,10 @@
 <strong>@ViewBag.ErrorMessage</strong>
 <div class="container col-md-7" style="border:1px solid">
     <p class="mt-3">
+        <!--
+            These are filled with the inputted MarketItem
+            related fields.
+        -->
         <strong>Item Price:</strong> @Model.ItemPrice.ToString("0.00")<br />
         <strong>Lister Name:</strong> @Model.Lister.UserName<br />
         <strong>Item Delivery Type:</strong> @Model.DeliveryType<br />
@@ -24,7 +28,11 @@
         <strong>Zip Code:</strong> @Model.ItemLocation.ZipCode<br />
         <strong>Country:</strong> @Model.ItemLocation.Country
     </p>
-
+    <!--
+        This form sends the MarketItemId value from the hidden
+        input to the Delete method in the MarketplaceController,
+        deleting the related record and send the user to the Index.
+    -->
     <form method="post" action="/Marketplace/Delete">
         <div class="row p-2 justify-content-center">
             <input type="hidden" name="id" value="@Model.MarketItemId" />
