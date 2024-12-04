@@ -10,12 +10,20 @@
         Where you can list an item for sale.
     </p>
 </div>
+
+<!--
+    A form that is used to post a MarketItem, after clicking
+    submit it will save the MarketItem to a database, where it will
+    then take you back to the Index page, having all the saved
+    MarketItems from the database be displayed.
+-->
 <form method="post" class="container">
     <div class="row justify-content-center">
         <div class="col-md-11">
             <div class="row p-2">
-                <!-- This is used to display if an error
-                    occurred while trying to save a Message
+                <!--
+                    This is used to display if an error
+                    occurred while trying to save a MarketItem
                     object to the database.
                 -->
                 <strong>@ViewBag.ErrorMessage</strong>
@@ -37,7 +45,7 @@
             </div>
             <div class="row p-2">
                 <label asp-for="DeliveryType" class="col-md-2 control-label"><strong>Delivery Type:</strong></label>
-                <select asp-for="DeliveryType" class="col-md-9 form-control" required >
+                <select asp-for="DeliveryType" class="col-md-9 form-control" required>
                     <option value="Pick Up">Pick Up</option>
                     <option value="Deliver">Deliver</option>
                     <option value="Mail">Mail</option>
