@@ -9,7 +9,10 @@ builder.Services.AddControllersWithViews();
 var connectionString = builder.Configuration.GetConnectionString("MySqlConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
-
+// Part of the dependency injection setup,
+// where when request is made for the
+// IMessageRepository it makes a new
+// instance of MessageRepository and provides it.
 builder.Services.AddTransient<IMarketItemRepository, MarketItemRepository>();
 
 var app = builder.Build();

@@ -19,7 +19,6 @@ namespace MiddayMarketplace.Controllers
             repo = r;
         }
 
-
         public IActionResult Index()
         {
             /* This gets all the current MarketItem

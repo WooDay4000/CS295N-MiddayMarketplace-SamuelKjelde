@@ -73,5 +73,47 @@ namespace MiddayMarketplaceTests
              */
             Assert.True(result.GetType() == typeof(ViewResult));
         }
+
+        [Fact]
+        /* This test checks to see if a MarketItem that what would
+         * be deleted successful is able to be committed to the
+         * database.
+         */
+        public void Delete_DeleteTest_Success()
+        {
+            /* Arrange
+             * Done in the constructor
+             */
+
+            // Act
+            item.Lister = new AppUser();
+            int marketItemId = repo.StoreMarketItem(item);
+            var result = controller.Delete(marketItemId);
+
+            /* Assert
+             * Check to see if I got a RedirectToActionResult
+             */
+            Assert.True(result.GetType() == typeof(RedirectToActionResult));
+        }
+
+        [Fact]
+        /* This test checks to see if a MarketItem that what would
+         * be deleted unsuccessful won't be able to be added to the
+         * database.
+         */
+        public void Delete_DeleteTest_Failure()
+        {
+            /* Arrange
+             * Done in the constructor
+             */
+
+            // Act
+            var result = controller.Delete(4);
+
+            /* Assert
+             * Check to see if I got a ViewResult
+             */
+            Assert.True(result.GetType() == typeof(ViewResult));
+        }
     }
 }
