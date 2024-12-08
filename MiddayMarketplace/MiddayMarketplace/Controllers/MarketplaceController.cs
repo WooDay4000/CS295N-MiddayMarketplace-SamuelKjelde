@@ -40,7 +40,6 @@ namespace MiddayMarketplace.Controllers
          * This being done with "Where" and the inputted
          * values.
          */
-        [HttpPost]
         public IActionResult Filter(string lister, string itemName, string deliveryType)
         {
             var marketItems = repo.GetAllMarketItems()
