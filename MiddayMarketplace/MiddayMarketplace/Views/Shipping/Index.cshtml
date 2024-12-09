@@ -33,23 +33,23 @@
 <form method="post" class="container">
     <div class="row justify-content-center">
         <div class="row p-2">
-            <label for="length" class="col-md-2">Length (in):</label>
+            <label for="length" class="col-md-2 control-label">Length (in):</label>
             <input name="length" class="col-md-8 form-control" value="@Model.Length" />
         </div>
         <div class="row p-2">
-            <label for="width" class="col-md-2">Width (in):</label>
+            <label for="width" class="col-md-2 control-label">Width (in):</label>
             <input name="width" class="col-md-8 form-control" value="@Model.Width" />
         </div>
         <div class="row p-2">
-            <label for="height" class="col-md-2">Height (in):</label>
+            <label for="height" class="col-md-2 control-label">Height (in):</label>
             <input name="height" class="col-md-8 form-control" value="@Model.Height" />
         </div>
         <div class="row p-2">
-            <label for="weight" class="col-md-2">Weight (lb):</label>
+            <label for="weight" class="col-md-2 control-label">Weight (lb):</label>
             <input name="weight" class="col-md-8 form-control" value="@Model.Weight" />
         </div>
         <div class="row p-2">
-            <button type="submit" class="col-3 form-control btn btn-success">Submit</button>
+            <button type="submit" class="col-3 form-control btn btn-success w-25">Submit</button>
         </div>
     </div>
 </form>
@@ -59,14 +59,17 @@
     <p>
         <strong>Example</strong> (Actual Weight is Higher):<br />
         <strong> Weight(lb):</strong> 4<br />
-        <strong>(Length(in))</strong> 12 * <strong>(Width(in))</strong> 6 * <strong>(Width(in))</strong> 6 / <strong>(Dimensional Factor)</strong> 139<br />
-        = <strong>(Dimensional Factor)</strong> 3.11<br />
-        <strong>(Weight(lb))</strong> 4 * <strong>(Shipping Rate)</strong> $1.50 + <strong>(Base Shipping Cost)</strong> 5 + <strong>(Shipping Cost)</strong> = $11.00<br />
+        <strong>(Length(in)</strong> 12 * <strong>Width(in)</strong> 6 * <strong>Height(in)</strong> 6<strong>)</strong> / <strong>(Dimensional Factor)</strong> 139<br />
+        = <strong>(Dimensional Weight)</strong> 3.11<br />
+        <strong>(Weight(lb)</strong> 4 * <strong>(Shipping Rate)</strong> $1.50<strong>)</strong> + <strong>(Base Shipping Cost)</strong> $5.00<br />
+        = <strong>(Shipping Cost)</strong> $11.00<br />
+        <br />
         <strong>Example</strong> (Dimensional Factor is Higher):<br />
         <strong> Weight(lb):</strong> 2<br />
-        <strong>(Length(in))</strong> 15 * <strong>(Width(in))</strong> 7 * <strong>(Width(in))</strong> 7 / <strong>(Dimensional Factor)</strong> 139<br />
-        = <strong>(Dimensional Factor)</strong> 5.29<br />
-        <strong>(Dimensional Factor)</strong> 5.29 * <strong>(Shipping Rate)</strong> $1.50 + <strong>(Base Shipping Cost)</strong> 5 + <strong>(Shipping Cost)</strong> = $12.94
+        <strong>(Length(in)</strong> 15 * <strong>Width(in)</strong> 7 * <strong>Height(in)</strong> 7<strong>)</strong> / <strong>(Dimensional Factor)</strong> 139<br />
+        = <strong>(Dimensional Weight)</strong> 5.29<br />
+        <strong>((Dimensional Weight)</strong> 5.29 * <strong>(Shipping Rate)</strong> $1.50<strong>)</strong> + <strong>(Base Shipping Cost)</strong> $5.00<br />
+        = <strong>(Shipping Cost)</strong> $12.93
     </p>
     <hr />
 </div>

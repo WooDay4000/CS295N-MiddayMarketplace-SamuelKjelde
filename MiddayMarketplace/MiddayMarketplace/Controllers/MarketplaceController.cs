@@ -43,9 +43,9 @@ namespace MiddayMarketplace.Controllers
         public IActionResult Filter(string lister, string itemName, string deliveryType)
         {
             var marketItems = repo.GetAllMarketItems()
-                .Where(i => lister == null || i.Lister.UserName.ToLower() == lister.ToLower())
+                .Where(i => lister == null || i.Lister.UserName.ToLower().Contains(lister.ToLower()))
                 .Where(i => itemName == null || i.ItemName.ToLower().Contains(itemName.ToLower()))
-                .Where(i => deliveryType == null || i.DeliveryType.ToLower() == deliveryType.ToLower())
+                .Where(i => deliveryType == null || i.DeliveryType == deliveryType)
                 .ToList();
             return View("Index", marketItems);
         }
@@ -73,7 +73,7 @@ namespace MiddayMarketplace.Controllers
         }
 
         /* A IActionResult method called Delete that is used in the
-         * Item cshtml, where it called using a form with the 
+         * Item cshtml, where it's called using a form with the 
          * Market Item Id already set, with the value being from the
          * MarketItem that was displayed on the Item cshtml.
          */
@@ -102,7 +102,6 @@ namespace MiddayMarketplace.Controllers
                 ViewBag.ErrorMessage = "There was an error deleting the item.";
                 return View();
             }
-
         }
 
         public IActionResult Post()
@@ -131,7 +130,7 @@ namespace MiddayMarketplace.Controllers
             }
             else
             {
-                /* Where it didn't succeed it would send you back to the
+                /* Where if it didn't succeed it would send you back to the
                  * Post cshtml, with the error message that it failed to
                  * save.
                  */

@@ -10,8 +10,9 @@ namespace MiddayMarketplaceTests
 {
     public class CalculatorTests
     {
+        // A Shipping object used for testing.
         private Shipping shipping = new Shipping();
-        // Access to the calculated
+        // Access to the calculated class methods.
         private Calculated calculated = new Calculated();
 
         [Fact]

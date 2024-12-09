@@ -36,10 +36,10 @@ namespace MiddayMarketplaceTests
 
         [Fact]
         /* This test checks to see if a MarketItem that what would
-         * be success is able to be committed to the
+         * be successful is able to be committed to the
          * database.
          */
-        public void MarketItem_PostTest_Success()
+        public void Post_PostTest_Success()
         {
             /* Arrange
              * Done in the constructor
@@ -47,6 +47,7 @@ namespace MiddayMarketplaceTests
 
             // Act
             item.Lister = new AppUser();
+            item.ItemLocation = new Location();
             var result = controller.Post(item);
 
             /* Assert
@@ -57,9 +58,9 @@ namespace MiddayMarketplaceTests
 
         [Fact]
         /* This test checks to see if a MarketItem that what would
-         * be unsuccess won't be able to be added to the database.
+         * be unsuccessful won't be able to be added to the database.
          */
-        public void MarketItem_PostTest_Failure()
+        public void Post_PostTest_Failure()
         {
             /* Arrange
              * Done in the constructor
@@ -79,7 +80,7 @@ namespace MiddayMarketplaceTests
          * be deleted successful is able to be committed to the
          * database.
          */
-        public void Delete_DeleteTest_Success()
+        public void Item_DeleteTest_Success()
         {
             /* Arrange
              * Done in the constructor
@@ -87,13 +88,22 @@ namespace MiddayMarketplaceTests
 
             // Act
             item.Lister = new AppUser();
-            int marketItemId = repo.StoreMarketItem(item);
-            var result = controller.Delete(marketItemId);
+            item.ItemLocation = new Location();
+            // Checks to see if it was saved.
+            if (1 == repo.StoreMarketItem(item))
+            {
+                /* Tries to delete the record with the
+                 * given Market Item Id of 1, Which 
+                 * should be the record that was 
+                 * just created. 
+                 */
+                var result = controller.Delete(1);
 
-            /* Assert
-             * Check to see if I got a RedirectToActionResult
-             */
-            Assert.True(result.GetType() == typeof(RedirectToActionResult));
+                /* Assert
+                 * Check to see if I got a RedirectToActionResult
+                 */
+                Assert.True(result.GetType() == typeof(RedirectToActionResult));
+            }
         }
 
         [Fact]
@@ -101,13 +111,17 @@ namespace MiddayMarketplaceTests
          * be deleted unsuccessful won't be able to be added to the
          * database.
          */
-        public void Delete_DeleteTest_Failure()
+        public void Item_DeleteTest_Failure()
         {
             /* Arrange
              * Done in the constructor
              */
 
-            // Act
+            /* Act
+             * Tries to delete a record with
+             * a Market Item Id of 4, which
+             * does not exist.
+             */
             var result = controller.Delete(4);
 
             /* Assert

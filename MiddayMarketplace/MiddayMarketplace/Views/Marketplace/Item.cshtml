@@ -11,18 +11,20 @@
     </p>
 </div>
 <strong>@ViewBag.ErrorMessage</strong>
-<div class="container col-md-7" style="border:1px solid">
+<hr />
+
+<div class="col-md-7 container" style="border:1px solid">
     <p class="mt-3">
         <!--
             These are filled with the inputted MarketItem
             related fields.
         -->
-        <strong>Item Price:</strong> @Model.ItemPrice.ToString("0.00")<br />
+        <strong>Item Price:</strong> $@Model.ItemPrice.ToString("0.00")<br />
         <strong>Lister Name:</strong> @Model.Lister.UserName<br />
         <strong>Item Delivery Type:</strong> @Model.DeliveryType<br />
         <strong>Item Listed:</strong> @Model.DateListed.ToString("MM/d/yyyy h:mm:ss tt")<br />
         <br />
-        <strong>Street Address:</strong>@Model.ItemLocation.StreetAddress<br />
+        <strong>Street Address:</strong> @Model.ItemLocation.StreetAddress<br />
         <strong>City:</strong> @Model.ItemLocation.City<br />
         <strong>State:</strong> @Model.ItemLocation.State<br />
         <strong>Zip Code:</strong> @Model.ItemLocation.ZipCode<br />
@@ -36,7 +38,7 @@
     <form method="post" action="/Marketplace/Delete">
         <div class="row p-2 justify-content-center">
             <input type="hidden" name="id" value="@Model.MarketItemId" />
-            <button type="submit" class="form-control btn btn-success w-25">Buy</button>
+            <button type="submit" class="w-25 form-control btn btn-success ">Buy</button>
         </div>
     </form>
 </div>
