@@ -9,30 +9,45 @@
         Welcome to the Marketplace!<br />
         Where all the current items are listed.
     </p>
+    <!--
+        Takes the user to a page the is used to post a
+        item, that is saved to the database.
+    -->
+    <a href="/Marketplace/Post" class="btn btn-success">Post (Click to List An Item)</a>
 </div>
+<hr />
 
-<a href="/Marketplace/Post" class="btn btn-success">Post</a>
-<br />
-<br />
-
-<strong>Filters for the list of Items:</strong>
-<form method="post" action="/Marketplace/Filter" class="container">
-    <div class="col-md-11">
-        <div class="row p-2">
-            <label for="lister" class="col-md-2 control-label"><strong>Lister Name:</strong></label>
-            <input name="lister" class="col-md-9 form-control" />
-            <label for="itemName" class="col-md-2 control-label"><strong>Item Name:</strong></label>
-            <input name="itemName" class="col-md-9 form-control" />
-            <label for="DeliveryType" class="col-md-2 control-label"><strong>Delivery Type:</strong></label>
-            <select name="DeliveryType" class="col-md-9 form-control">
-                <option value=""></option>
-                <option value="Pick Up">Pick Up</option>
-                <option value="Deliver">Deliver</option>
-                <option value="Mail">Mail</option>
-            </select>
-        </div>
-        <div class="row p-2">
-            <button type="submit" class="col-3 form-control btn btn-success">Submit</button>
+<!--
+    A form that sends the inputted info
+    to the MarketplaceController Filter method,
+    where it grabs only the records that match
+    the inputted info to then be displayed
+    on the Index page.
+-->
+<strong>Filters for the list of Items</strong>
+<form method="get" action="/Marketplace/Filter" class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-11">
+            <div class="row p-2">
+                <label for="lister" class="col-md-2 control-label"><strong>Lister Name:</strong></label>
+                <input name="lister" class="col-md-9 form-control" />
+            </div>
+            <div class="row p-2">
+                <label for="itemName" class="col-md-2 control-label"><strong>Item Name:</strong></label>
+                <input name="itemName" class="col-md-9 form-control" />
+            </div>
+            <div class="row p-2">
+                <label for="deliveryType" class="col-md-2 control-label"><strong>Delivery Type:</strong></label>
+                <select name="deliveryType" class="col-md-9 form-control">
+                    <option value=""></option>
+                    <option value="Pick Up">Pick Up</option>
+                    <option value="Deliver">Deliver</option>
+                    <option value="Mail">Mail</option>
+                </select>
+            </div>
+            <div class="row p-2">
+                <button type="submit" class="col-3 w-25 form-control btn btn-success">Submit</button>
+            </div>
         </div>
     </div>
 </form>
@@ -40,18 +55,40 @@
 <div class="text-center">
     <h1 class="display-4">List of Items</h1>
     <hr />
+    <!--
+        if clause where if there isn't any message in the list
+        then displayed it will have "There isn't any messages." be displayed.
+    -->
     @if (Model.Count != 0)
     {
         foreach (MarketItem marketItem in Model)
         {
+            <!--
+                This being filled with the fields of the current MarketItem
+                object from the foreach loop returned from the database.
+             -->
             <div class="container">
-                <strong>Lister Name:</strong> @marketItem.Lister.UserName<br />
-                <strong>Item Name:</strong> @marketItem.ItemName<br />
-                <strong>Item Price:</strong> @marketItem.ItemPrice.ToString("0.00")<br />
-                <strong>Delivery Type:</strong> @marketItem.DeliveryType<br />
-                <a href="/Marketplace/Item?value=@marketItem.MarketItemId">Inspect</a>
+                <div class="row justify-content-center">
+                    <div class="col-5">
+                        <strong>Lister Name:</strong> @marketItem.Lister.UserName<br />
+                        <strong>Item Name:</strong> @marketItem.ItemName<br />
+                        <strong>Item Price:</strong> $@marketItem.ItemPrice.ToString("0.00")<br />
+                        <strong>Delivery Type:</strong> @marketItem.DeliveryType<br />
+                    </div>
+                    <div class="col-5 align-content-center">
+                        <!--
+                            Takes you to Item page that has more info on the
+                            this item that has the related MarketItemId.
+                        -->
+                        <a href="/Marketplace/Item?value=@marketItem.MarketItemId" class="btn btn-secondary">Inspect</a>
+                    </div>
+                </div>
             </div>
             <hr />
         }
+    }
+    else
+    {
+        <p>There isn't any items.</p>
     }
 </div>

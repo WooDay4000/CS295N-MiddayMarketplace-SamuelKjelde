@@ -10,40 +10,66 @@
         Where you can use this calculator to determine<br />
         how much should shipping be for a given item.
     </p>
+    <hr />
+    <p>
+        Where the base shipping cost is <strong>$5.00 </strong>where depending<br />
+        on the item's weight and size an amount is added to this base amount.<br />
+        With this amount being a calculation of the shipping rate of <strong>$1.50 times</strong><br />
+        either the dimensional weight, a ratio of the space it takes up to the<br />
+        weight of the item, or the actual weight of the item, whichever is higher<br />
+        is used in the calculation.
+    </p>
+    <hr />
 </div>
-
-<p>
-    Where the base shipping cost is five dollars<br />
-    where depending on the item's weight and size<br />
-    an amount is added to this base amount.<br />
-    With this amount being a calculation of the shipping<br />
-    rate of $1.50 times either the dimensional weight<br />
-    or the actual weight of the item, whichever is higher.<br />
-</p>
 
 <strong>Enter the information to get the Shipping Cost:</strong>
 <br />
 <strong>Shipping Cost:</strong> $@Model.ShippingCost
+<!--
+    A form that sends the values inputted to the
+    HttpPost Index method where it does the calculations
+    to determine the shipping cost based on size and weight.
+-->
 <form method="post" class="container">
     <div class="row justify-content-center">
         <div class="row p-2">
-            <label for="Length" class="col-md-2">Length (in):</label>
-            <input name="Length" class="col-md-8 form-control" value="@Model.Length" />
+            <label for="length" class="col-md-2 control-label">Length (in):</label>
+            <input name="length" class="col-md-8 form-control" value="@Model.Length" />
         </div>
         <div class="row p-2">
-            <label for="Width" class="col-md-2">Width (in):</label>
-            <input name="Width" class="col-md-8 form-control" value="@Model.Width" />
+            <label for="width" class="col-md-2 control-label">Width (in):</label>
+            <input name="width" class="col-md-8 form-control" value="@Model.Width" />
         </div>
         <div class="row p-2">
-            <label for="Height" class="col-md-2">Height (in):</label>
-            <input name="Height" class="col-md-8 form-control" value="@Model.Height" />
+            <label for="height" class="col-md-2 control-label">Height (in):</label>
+            <input name="height" class="col-md-8 form-control" value="@Model.Height" />
         </div>
         <div class="row p-2">
-            <label for="Weight" class="col-md-2">Weight (lb):</label>
-            <input name="Weight" class="col-md-8 form-control" value="@Model.Weight" />
+            <label for="weight" class="col-md-2 control-label">Weight (lb):</label>
+            <input name="weight" class="col-md-8 form-control" value="@Model.Weight" />
         </div>
         <div class="row p-2">
-            <button type="submit" class="col-3 form-control btn btn-success">Submit</button>
+            <button type="submit" class="col-3 form-control btn btn-success w-25">Submit</button>
         </div>
     </div>
 </form>
+
+<div class="text-center">
+    <hr />
+    <p>
+        <strong>Example</strong> (Actual Weight is Higher):<br />
+        <strong> Weight(lb):</strong> 4<br />
+        <strong>(Length(in)</strong> 12 * <strong>Width(in)</strong> 6 * <strong>Height(in)</strong> 6<strong>)</strong> / <strong>(Dimensional Factor)</strong> 139<br />
+        = <strong>(Dimensional Weight)</strong> 3.11<br />
+        <strong>(Weight(lb)</strong> 4 * <strong>(Shipping Rate)</strong> $1.50<strong>)</strong> + <strong>(Base Shipping Cost)</strong> $5.00<br />
+        = <strong>(Shipping Cost)</strong> $11.00<br />
+        <br />
+        <strong>Example</strong> (Dimensional Factor is Higher):<br />
+        <strong> Weight(lb):</strong> 2<br />
+        <strong>(Length(in)</strong> 15 * <strong>Width(in)</strong> 7 * <strong>Height(in)</strong> 7<strong>)</strong> / <strong>(Dimensional Factor)</strong> 139<br />
+        = <strong>(Dimensional Weight)</strong> 5.29<br />
+        <strong>((Dimensional Weight)</strong> 5.29 * <strong>(Shipping Rate)</strong> $1.50<strong>)</strong> + <strong>(Base Shipping Cost)</strong> $5.00<br />
+        = <strong>(Shipping Cost)</strong> $12.93
+    </p>
+    <hr />
+</div>
