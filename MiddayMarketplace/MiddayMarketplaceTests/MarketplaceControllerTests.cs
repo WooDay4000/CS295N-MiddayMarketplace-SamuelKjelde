@@ -80,7 +80,7 @@ namespace MiddayMarketplaceTests
          * be deleted successful is able to be committed to the
          * database.
          */
-        public void Item_DeleteTest_Success()
+        public void Delete_PostTest_Success()
         {
             /* Arrange
              * Done in the constructor
@@ -111,7 +111,7 @@ namespace MiddayMarketplaceTests
          * be deleted unsuccessful won't be able to be added to the
          * database.
          */
-        public void Item_DeleteTest_Failure()
+        public void Delete_PostTest_Failure()
         {
             /* Arrange
              * Done in the constructor
